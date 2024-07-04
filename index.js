@@ -16,8 +16,8 @@ const port = 5000;
 // Create a MySQL connection pool
 const pool = mysql.createPool({
   host: '65.60.61.250',
-  user: 'tempor47_mood783',
-  password: '!@0S7p41Pe',
+  user: 'tempor47_sudh',
+  password: 'Sudhanshu@123',
   database: 'tempor47_quiz_print',
 })
 // const pool = mysql.createPool({

@@ -150,11 +150,11 @@ app.post("/api/login", async (req, res) => {
 // });
 
 app.get("/getPublicIpAddress", (req, res) => {
-  // checkDatabaseConnection();
-  // const publicIp =
-  //   req.headers["x-forwarded-for"] || req.connection.remoteAddress;
-  // res.send(`Public IP Address: ${publicIp}`);
-  res.send('hello world');
+  checkDatabaseConnection();
+  const publicIp =
+    req.headers["x-forwarded-for"] || req.connection.remoteAddress;
+  res.send(`Public IP Address: ${publicIp}`);
+  
 });
 
 app.use(express.json());
@@ -377,7 +377,7 @@ app.get("/quiz/:courseId", authenticationMiddleware, (req, res) => {
 });
 
 // API TO GET ALL COURSES
-app.get("/api/courses", authenticationMiddleware, (req, res) => {
+app.get("/api/courses", (req, res) => {
   const query = `
   SELECT id AS course_id, fullname AS course_name, summary AS course_description FROM mdl8m_course;
   `;

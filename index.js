@@ -27,6 +27,15 @@ const pool = mysql.createPool({
 //   database: "clientmoodle",
 // });
 app.get("/api/dummy",(req, res) => {
+
+  pool.getConnection((err) => {
+    if (err) {
+      res.json("Database connection error:", err);
+    } else {
+      res.json("Database connection successful!");
+    }
+  });
+  
   const query = `
   SELECT id AS course_id, fullname AS course_name, summary AS course_description FROM mdl8m_course;
   `;

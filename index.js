@@ -150,10 +150,11 @@ app.post("/api/login", async (req, res) => {
 // });
 
 app.get("/getPublicIpAddress", (req, res) => {
-  checkDatabaseConnection();
-  const publicIp =
-    req.headers["x-forwarded-for"] || req.connection.remoteAddress;
-  res.send(`Public IP Address: ${publicIp}`);
+  // checkDatabaseConnection();
+  // const publicIp =
+  //   req.headers["x-forwarded-for"] || req.connection.remoteAddress;
+  // res.send(`Public IP Address: ${publicIp}`);
+  res.send('hello world');
 });
 
 app.use(express.json());

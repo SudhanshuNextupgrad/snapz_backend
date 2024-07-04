@@ -31,21 +31,21 @@ app.get("/api/dummy",(req, res) => {
   SELECT id AS course_id, fullname AS course_name, summary AS course_description FROM mdl8m_course;
   `;
 
-  res.json("hello");
-  // pool.query(query, (error, results) => {
-  //   if (error) {
-  //     console.error("Error fetching courses:", error);
-  //     res.status(500).json({ error: "Internal server error" });
-  //   } else {
-  //     const courses = results.map((row) => ({
-  //       course_id: row.course_id,
-  //       course_name: row.course_name,
-  //       course_description: row.course_description,
-  //     }));
+  
+  pool.query(query, (error, results) => {
+    if (error) {
+      console.error("Error fetching courses:", error);
+      res.status(500).json({ error: "Internal server error" });
+    } else {
+      const courses = results.map((row) => ({
+        course_id: row.course_id,
+        course_name: row.course_name,
+        course_description: row.course_description,
+      }));
 
-  //     res.json(courses);
-  //   }
-  // });
+      res.json(courses);
+    }
+  });
 });
 function printSomething() {
   console.log("Server is running.");
